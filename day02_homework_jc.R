@@ -2,6 +2,7 @@
 # Use comments where you're having trouble or questions
 
 # 1. Read your data set into R
+?read.table
 
 # 2. Peek at the top few rows
 
