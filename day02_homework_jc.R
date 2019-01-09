@@ -4,9 +4,12 @@
 # 1. Read your data set into R
 ?read.table
 
-library(readxl)
-dataTable <- read_excel("dataTable.xlsx")
+dataTable <- read.csv(file = 'dataTable.csv')
 View(dataTable)
+
+# library(readxl)
+# dataTable <- read_excel("dataTable.xlsx")
+# View(dataTable)
 
 # 2. Peek at the top few rows
 
@@ -51,6 +54,11 @@ View(df2)
 # 11. Create a new data.frame that is a random sample of half of the rows.
 # HINT: ?sample
 
+?sample
+
+df3 <- dataTable[c(sample(1:2028, size = 1014)), ]
+View(df3)
+
 # 12. Find a comparison in your data that is interesting to make
 #     (comparing two sets of numbers)
 #     - run a t.test() (or cor.test()) for that comparison
@@ -60,11 +68,25 @@ View(df2)
 #       formats, if possible
 #     - if one is NOT possible, say why you can't do it
 
+cor.test(dataTable$age_yrs, dataTable$lspan)
+cor.test(dataTable[1:2028, 6], dataTable[1:2028, 9])
+
+
 # 13. Repeat #12 for TWO more comparisons
 #     - Tip: it's okay if the comparisons are kind of nonsensical, this is 
 #       just a programming exercise
 
+cor.test(dataTable$score, dataTable$age_yrs)
+cor.test(dataTable$polledResponse, dataTable$age_yrs)
+
 # 14. Save all results from #12 and #13 in an .RData file
+
+c1 <- cor.test(dataTable$age_yrs, dataTable$lspan)
+c2 <- cor.test(dataTable[1:2028, 6], dataTable[1:2028, 9])
+c3 <- cor.test(dataTable$score, dataTable$age_yrs)
+c4 <- cor.test(dataTable$polledResponse, dataTable$age_yrs)
+
+save(list=c("c1", "c2", "c3", "c4"), file = "corFam.RData")
 
 # 15. Email me your version of this script, PLUS the .RData
 #     file from #14
