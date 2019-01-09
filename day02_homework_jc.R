@@ -86,7 +86,7 @@ c2 <- cor.test(dataTable[1:2028, 6], dataTable[1:2028, 9])
 c3 <- cor.test(dataTable$score, dataTable$age_yrs)
 c4 <- cor.test(dataTable$polledResponse, dataTable$age_yrs)
 
-save(list=c("c1", "c2", "c3", "c4"), file = "corFam.RData")
+save(c1, c2, c3, c4, file = "corFam1.RData")
 
 # 15. Email me your version of this script, PLUS the .RData
 #     file from #14
