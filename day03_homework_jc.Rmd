@@ -6,6 +6,13 @@ output: html_document
 1. Identify a numeric column in your data. Find the 95th %ile value of that column.
 
 ```{r}
+library(readxl)
+d1 <- read_excel("dataTable.xlsx", na = "NA")
+View(d1)
+
+#response time data
+rt95 <- quantile(d1$buttonResponse, .95)
+rt95
 
 ```
 
@@ -13,11 +20,21 @@ output: html_document
 
 ```{r}
 
+subrt95 <- d1[d1$buttonResponse > rt95, ]
+View(subrt95)
+
 ```
 
 3. Now find the lowest 5th %ile, and subset to the data that includes both the lower extremes and upper extremes
 
 ```{r}
+
+rt5 <- quantile(d1$buttonResponse, .05)
+subrt5 <- d1[d1$buttonResponse < rt5, ]
+View(subrt5)
+
+subRTquant <- d1[d1$buttonResponse < rt5 | d1$buttonResponse > rt95, ]
+View(subRTquant)
 
 ```
 
