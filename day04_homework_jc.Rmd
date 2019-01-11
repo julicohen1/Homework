@@ -7,6 +7,12 @@ output: html_document
 1. Identify a column in your data that *should* be a factor (whether it is or not). Check to see whether R is already treating it as a factor, and if not, convert it into a factor.
 
 ```{r}
+library(readxl)
+fam1 <- read_excel('dataTable.xlsx')
+View(fam1)
+
+is.factor(fam1$age_group)
+factor(fam1$age_group)
 
 ```
 
@@ -14,13 +20,17 @@ output: html_document
 2. What are the levels of the factor? How many occurrences of each level are there in the data? Are the levels ordered in a sensible/meaningful way?
    
 ```{r}
-
+ageFactor <- factor(fam1$age_group)
+levels(ageFactor)
+summary(ageFactor) #0=1176, 1=852
 ```
 
 
 3. Create a new column that is a numeric "version" of the factor column, using `as.numeric()`. Use `xtabs()` to see how the values of these columns line up.
 
 ```{r}
+#already a numeric version, so i will switch to the character version
+
 
 ```
 
