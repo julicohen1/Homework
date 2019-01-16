@@ -7,6 +7,15 @@ output: html_document
 1. Identify a column in your data that *should* be a factor (whether it is or not). Check to see whether R is already treating it as a factor, and if not, convert it into a factor.
 
 ```{r}
+<<<<<<< HEAD
+=======
+library(readxl)
+fam1 <- read_excel('dataTable.xlsx')
+View(fam1)
+
+is.factor(fam1$age_group)
+factor(fam1$age_group)
+>>>>>>> ec058b844b9bdf045ae532aadcc3bfd22414495e
 
 ```
 
@@ -14,13 +23,24 @@ output: html_document
 2. What are the levels of the factor? How many occurrences of each level are there in the data? Are the levels ordered in a sensible/meaningful way?
    
 ```{r}
+<<<<<<< HEAD
 
+=======
+ageFactor <- factor(fam1$age_group)
+levels(ageFactor)
+summary(ageFactor) #0=1176, 1=852
+>>>>>>> ec058b844b9bdf045ae532aadcc3bfd22414495e
 ```
 
 
 3. Create a new column that is a numeric "version" of the factor column, using `as.numeric()`. Use `xtabs()` to see how the values of these columns line up.
 
 ```{r}
+<<<<<<< HEAD
+=======
+#already a numeric version, so i will switch to the character version
+
+>>>>>>> ec058b844b9bdf045ae532aadcc3bfd22414495e
 
 ```
 
@@ -67,4 +87,14 @@ output: html_document
     - split up your data into chunks
     - make up some new table of information that you want to merge in
   - Explain (in words) what you are trying to do
+<<<<<<< HEAD
 
+=======
+  - Use binding/merging commands to accomplish this
+  - Complete at least ONE example of binding and ONE example of merging
+
+```{r}
+
+
+```
+>>>>>>> ec058b844b9bdf045ae532aadcc3bfd22414495e
