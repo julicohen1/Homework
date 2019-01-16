@@ -11,8 +11,9 @@ library(readxl)
 fam1 <- read_excel('dataTable.xlsx')
 View(fam1)
 
-is.factor(fam1$age_group)
-factor(fam1$age_group)
+class(fam1$age_group)
+fam1$age_group_factor <- as.factor(fam1$age_group)
+is.factor(fam1$age_group_factor)
 
 ```
 
@@ -20,9 +21,8 @@ factor(fam1$age_group)
 2. What are the levels of the factor? How many occurrences of each level are there in the data? Are the levels ordered in a sensible/meaningful way?
    
 ```{r}
-ageFactor <- factor(fam1$age_group)
-levels(ageFactor)
-summary(ageFactor) #0=1176, 1=852
+levels(fam1$age_group_factor)
+summary(fam1$age_group_factor) #0=1176, 1=852
 ```
 
 
@@ -31,7 +31,13 @@ summary(ageFactor) #0=1176, 1=852
 ```{r}
 #already a numeric version, so i will switch to the character version
 
+levels(fam1$age_group_factor) <- c("young", "old")
+levels(fam1$age_group_factor)
+ 
+summary(fam1)
+class(fam1$age_group_factor)
 
+xtabs(~ age_group + age_group_factor, fam1)
 ```
 
 
@@ -39,7 +45,10 @@ summary(ageFactor) #0=1176, 1=852
   (e.g., if you have a factor with levels "A" and "B", you could make a new column that had "condition A" and "condition B" as the level names instead)
 
 ```{r}
+fam1$new_age_group <- fam1$age_group_factor
 
+levels(fam1$new_age_group) <- c("y", "o")
+xtabs(~ new_age_group + age_group_factor, fam1)
 
 ```
 
@@ -50,8 +59,11 @@ summary(ageFactor) #0=1176, 1=852
   c. `factor()`
 
 ```{r}
+fam1$new_age_group_1 <- relevel(fam1$age_group_factor, "old")
+fam1$new_age_group_2 <- reorder
+fam1$new_age_group_3 <- factor(fam1$age_group_factor, levels = c("old", "young"))
 
-
+?reorder
 ```
 
 
